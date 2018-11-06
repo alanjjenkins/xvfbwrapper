@@ -94,6 +94,13 @@ class Xvfb(object):
         finally:
             self._cleanup_lock_file()
 
+    def get_display(self):
+        """Get the DISPLAY that is in use by the Xvfb instance."""
+        try:
+            return self.new_display
+        except Exception as e:
+            return None
+
     def xvfb_exists(self):
         """Check that Xvfb is available on PATH and is executable."""
         paths = os.environ['PATH'].split(os.pathsep)
